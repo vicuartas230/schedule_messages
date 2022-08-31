@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'motivational',
-    'crispy_forms'
+    'crispy_forms',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -108,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -129,9 +130,10 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'America/Bogota'
-CELERY_BEAT_SCHEDULE = {
-    'task-number-one': {
-        'task': 'jobs.tasks.scheduledTask',
-        'schedule': crontab(minute='*/5')
-    }
-}
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
